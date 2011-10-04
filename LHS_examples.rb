@@ -1,7 +1,11 @@
 # # An alarm system.
 # 
-# To fully use Ruleby, the main point is to know precisely how to write LHS. The courrent DSL should change in the future, but let's talk of
-# how it works today.
+# To fully use Ruleby, the main point is to know precisely :
+#
+# 1. how to write LHS, _Left Hand Side_, the conditionnal part of a rule.  
+# 2. how to work with a facts databases. 
+#
+# The courrent DSL to write LHS should change in the future, but let's talk of how it works today.
 # 
 # Let's demonstrate this with rules for an alarm system for a fabric or computer room. First if someone push the alarm button, bell rings.
 # 
@@ -66,13 +70,43 @@ rule :buttonRelease,
     retract button
 end
 
-
-# 
-# 
-# ### Maintain a external state.
 #
-# ### Maintain an internal state in facts database
-#  
+# ### Maintain a external state.
+# You may think "The button is an external device and thus should be handled by an external object". Well, I would say "handle this technique with care" ! 
+# Sharing state between rule engine and the external word is really something risky if done improperly. The way of doing it is to keep a ref 
+# to the state objet, let's use a wrapping object to do it well, then tell the rule engine after each modification. 
+# In this exemple the name `Button` is kept for the class, even if `ButtonState` would be more appropriate.
+# I am just using a feature of common developpers called _Laziness_ which lead them to deploy incredible way of working with code they had 
+# made unclear this way. In this case this avoid me changin slighlty the above rules's LHS. This is the typical kind of case where you really
+# should avoid handling external states... But this technique is sometime the most adapted to a situation (Please send me correction proposal if you disagree with this). 
+#
+class ButtonInterface
+  def initialize(button_name, rule_engine)
+    @button = Button.new(:name => button_name, :status=>:released)
+    @engine = rule_engine
+    @engine.assert @button
+  end
+  
+  def push
+    @button.status = :pushed
+    @engine.modify @button
+  end
+  
+  def release
+    @button.status = :released
+    @engine.modify @button
+  end
+end
 
-# # Aren't we mixing states and events ?
-# Button convey a state and is used when something change... It is used as an event ! Sent in the fact database when there is a change.
+# ### Maintain an internal state in facts database
+# Ok, here we are ! What is behind this idea ? Guess ?
+# If you hold a state in facts database, what would you send to the rule engine, an other state ? Let see next chapter.
+
+# # Splitting states and events.
+#
+# In this exemple Button convey a state and is used when something change... It is used as an event ! What we could do is :
+# * Change states (and send engine.modify) inside rules. 
+# * Use simple rules which can handle events and change states if needed. 
+
+
+
