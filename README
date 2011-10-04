@@ -6,3 +6,10 @@ The first screencast is planned to be in french, but code and comments will be i
 This readme will be updated as soon as content is added.
 
 To know more about ruleby : https://github.com/Codalytics/ruleby
+
+Sources files have been commented in markdown in order to be processed with docco.
+
+# How to start ? 
+The first thing to understand after you have read content of ruleby Wiki is how to write LHS (Left Hand Side) of rules.
+the file LHS_examples.markdown demonstrate differents use. Please tell me if anything you see could be done better or even 
+if there is a good alternative I should present.
