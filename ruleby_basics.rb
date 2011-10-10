@@ -1,5 +1,31 @@
-# # An alarm system.
+# # Ruleby tutoriel.
 # 
+# After some hesitation, I decided to write a complete tuto about using "Ruleby". I will try to be as short as possible, which mean you will
+# need to read some official documentation at some moment. But the intended audience is people who may have heard about rule system but never 
+# really seen it. Which also mean some information may be voluntary "inexact" in order to lower the learning curve. Of course there also may be 
+# Totally wrong information just because of some error or even because of my english expression... If you do not figure why something is 
+# "so inexact" please drop a message (or a pull request).
+#
+#
+# # How to start
+# First you need to know __WHAT__ is a "rule system". Please check this link where this job is already done : 
+# https://github.com/Codalytics/ruleby/wiki/Introduction-to-Ruleby
+# where you do not need to read the technical part (altough you will need it quite fast).
+#
+# So, great, now you know that rule system is. There is one thing you need to know before we dive in : 
+# Understanding the interest of a rule system really __need__ you to use it and not only to read on example. 
+# I show (TODO: conjugaison ?) this techno to few people during last ten years and the result was really interesting : everyone who just read
+# about it did not see the interest of it. Everyone who tried - on one personnal exemple they had - alway have one available in their technological
+# toolbox and use it as soon as they find it can help them. So if you want to really benefit from this tuto, first learn as usual, reading 
+# it then, please, do not stop here. Try it on one of our problem. This is a matter of few hours. 
+# 
+# If you want to know on which problems a rule system will help you the more, read this : http://www.jessrules.com/jess/guidelines.shtml
+# This is not about ruleby, but this apply to ruleby also.
+# 
+#
+#
+# # An alarm system.
+#
 # To fully use Ruleby, the main point is to know precisely :
 #
 # 1. how to write LHS, _Left Hand Side_, the conditionnal part of a rule.  
