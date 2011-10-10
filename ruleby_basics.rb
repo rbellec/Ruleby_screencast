@@ -100,11 +100,13 @@ end
 
 # ### Maintain an internal state in facts database
 # Ok, here we are ! What is behind this idea ? Guess ?
-# If you hold a state in facts database, what would you send to the rule engine, an other state ? Let see next chapter.
+# If you hold a state in facts database, why would you send to the rule engine an other state ? Why not just handle "Events" and let the rule engine manage states consistently inside itself ? 
+# Let see next chapter.
 
 # # Splitting states and events.
 #
-# In this exemple Button convey a state and is used when something change... It is used as an event ! What we could do is :
+# In this exemple Button convey a state and is used when something change... It is used as an event ! 
+# What we could do is :
 # * Change states (and send engine.modify) inside rules. 
 # * Use simple rules which can handle events and change states if needed. 
 
